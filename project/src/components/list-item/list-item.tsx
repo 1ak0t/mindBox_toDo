@@ -4,7 +4,7 @@ import {setFilteredTasks, toggleActiveStatus} from '../../store/actions';
 import React from 'react';
 import {taskType} from '../../types';
 import {useAppSelector} from '../../hooks';
-import {AnimatePresence, motion} from 'framer-motion';
+import {motion} from 'framer-motion';
 
 type ListItemProps = {
   task: taskType;

@@ -5,7 +5,7 @@ import {addTask, clearTasks, setFilteredTasks} from '../../store/actions';
 import React, {useRef, useState} from 'react';
 import {nanoid} from 'nanoid';
 import {FilterState} from '../../constants';
-import {AnimatePresence, motion} from 'framer-motion';
+import {AnimatePresence} from 'framer-motion';
 
 function List() {
   const tasks = useAppSelector(state => state.tasks);
@@ -17,12 +17,6 @@ function List() {
   const filterAll = useRef<HTMLButtonElement>(null);
   const filterActive = useRef<HTMLButtonElement>(null);
   const filterCompleted = useRef<HTMLButtonElement>(null);
-
-  const listAnimate = {
-    visible: { opacity: 1 },
-    hidden: { opacity: 0 },
-    transition: {duration: 0.5}
-  }
 
   const onChangeInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTaskText(event.target?.value);

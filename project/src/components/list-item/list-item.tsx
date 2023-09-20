@@ -25,7 +25,6 @@ function ListItem({task}: ListItemProps) {
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 0, opacity: 0 }}
                   transition={{ duration: 0.5 }}
-                  transitionEnd= {{ display: "none" }}
                   htmlFor={task.id}
                   className={`list-item ${task.isActive ? "" : "list-item--inactive"}`}>
       <input onClick={onTaskClickHandle} type="checkbox" className="list-item__input" id={task.id} />

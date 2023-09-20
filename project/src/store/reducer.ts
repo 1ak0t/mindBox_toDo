@@ -3,7 +3,7 @@ import {addTask, clearTasks, setFilteredTasks, toggleActiveStatus} from './actio
 import {taskType} from '../types';
 import {FilterState} from '../constants';
 
-type initialStateType = {
+export type initialStateType = {
   tasks: taskType[];
   filteredTasks: taskType[];
   activeFilter: string;
@@ -13,7 +13,7 @@ const initialState: initialStateType = {
   tasks: [],
   filteredTasks: [],
   activeFilter: FilterState.All,
-}
+};
 
 const reducer = createReducer(initialState, builder => {
   builder
@@ -26,13 +26,14 @@ const reducer = createReducer(initialState, builder => {
       const taskIndex = state.tasks.findIndex((el) => el.id === id);
       state.tasks[taskIndex].isActive = !state.tasks[taskIndex].isActive;
       const filteredTasksIndex = state.filteredTasks.findIndex((el) => el.id === id);
-      if (filteredTasksIndex) {
+      if (filteredTasksIndex !== -1) {
         state.filteredTasks[filteredTasksIndex].isActive = !state.filteredTasks[filteredTasksIndex].isActive;
       }
     })
     .addCase(clearTasks, state => {
       state.filteredTasks = [];
       state.tasks = [];
+      state.activeFilter = FilterState.All;
     })
     .addCase(setFilteredTasks, (state, action) => {
       switch (action.payload) {

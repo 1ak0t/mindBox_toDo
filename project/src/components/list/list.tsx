@@ -21,7 +21,7 @@ function List() {
   const onChangeInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTaskText(event.target?.value);
   }
-  const addTaskSubmit = (event:  React.FormEvent<HTMLFormElement>) => {
+  const addTaskSubmitHandler = (event:  React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (taskText && taskText !== "") {
       dispatch(addTask({
@@ -63,7 +63,7 @@ function List() {
 
   return(
     <>
-      <form className="add" onSubmit={addTaskSubmit}>
+      <form className="add" onSubmit={addTaskSubmitHandler}>
         <label htmlFor="" className="add__label">
           <input value={taskText} onChange={onChangeInputHandler} type="text" className="add__input" name="text" placeholder="What needs to be done?" autoFocus />
         </label>
